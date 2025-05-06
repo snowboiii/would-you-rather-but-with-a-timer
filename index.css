@@ -2,15 +2,19 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+html {
+    height: 100%;
+}
+
 body {
     background-color: black;
     color: white;
+    height: 100%;
 }
 
 .container {
-    width: 98%;
-    height: 50vh;
-    margin: 1%;
+    width: 100%;
+    height: 100%;
     background-color: grey;
     display: flex;
     flex-direction: column;
@@ -21,7 +25,7 @@ body {
     justify-content: center;
     align-items: center;
     background-color: darkslateblue;
-    top: 8px;
+    top: 0px;
     font-size: 3rem;
     text-align: center;
 }
@@ -32,19 +36,45 @@ body {
     align-items: center;
     height: 100%;
     background-color: rgb(121, 61, 139);
-    top: 8px;
     font-size: 3rem;
     text-align: center;
 }
 
-#button1 {
+.button {
     font-size: 3rem;
     height: 100%;
     background-color: rgb(104, 60, 187);
+    border: none;
+    float: left;
+    cursor: pointer;
+    transition-duration: 200ms;
+}
+.button:hover{
+    background-color: rgb(113, 74, 187);
+}
+.button:hover::after {
+    color: white;
+}
+.button:active {
+    background-color: rgb(129, 92, 197);
+}
+
+#button1 {
+    background-color: rgb(255, 0, 0);
+}
+#button1:hover {
+    background-color: rgb(255, 0, 100);
+}
+#button1:active {
+    background-color: rgb(255, 0, 200);
 }
 
 #button2 {
-    font-size: 3rem;
-    height: 100%;
-    background-color: rgb(83, 60, 187);
+    background-color: rgb(0, 0, 255);
+}
+#button2:hover {
+    background-color: rgb(100, 0, 255);
+}
+#button2:active {
+    background-color: rgb(2000, 0, 255);
 }
