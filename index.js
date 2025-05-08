@@ -41,15 +41,19 @@ window.onload = () => {
 };
 
 function button1Click() {
-    clickedLeft.push(1);
-    clickedRight.push(0);
-    nextQuestion();
+    if (questionNumber <= questionArray.length) {
+        clickedLeft.push(1);
+        clickedRight.push(0);
+        nextQuestion();
+    }
 }
 
 function button2Click() {
-    clickedLeft.push(0);
-    clickedRight.push(1);
-    nextQuestion();
+    if (questionNumber <= questionArray.length) {
+        clickedLeft.push(0);
+        clickedRight.push(1);
+        nextQuestion();
+    }
 }
 
 function nextQuestion() {
@@ -59,7 +63,10 @@ function nextQuestion() {
         button2.innerHTML = answerArray[questionNumber][1];
         questionNumber++;
     }
-    else showStats();
+    else {
+        questionNumber++;
+        showStats();
+    }
 }
 
 function showStats() {
