@@ -30,7 +30,7 @@ body {
     text-align: center;
 }
 
-.button-container {
+.answer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -48,6 +48,7 @@ body {
     float: left;
     cursor: pointer;
     transition-duration: 200ms;
+    width: 50%;
 }
 .button:hover{
     background-color: rgb(113, 74, 187);
