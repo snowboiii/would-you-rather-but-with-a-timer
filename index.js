@@ -65,4 +65,5 @@ function nextQuestion() {
 function showStats() {
     console.log("left: " + clickedLeft);
     console.log("right: " + clickedRight);
+    alert(`clicked left: ${clickedLeft}\nclicked right: ${clickedRight}`);
 }
