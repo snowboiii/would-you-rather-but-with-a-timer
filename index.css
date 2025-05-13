@@ -26,8 +26,13 @@ body {
     align-items: center;
     background-color: darkslateblue;
     top: 0px;
+    height: 15%;
     font-size: 3rem;
     text-align: center;
+}
+
+#question-text {
+    margin: 1%;
 }
 
 .answer {

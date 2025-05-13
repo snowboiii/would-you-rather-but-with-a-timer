@@ -26,7 +26,9 @@ let questionNumber = 0
 
 const button1 = document.getElementById("button1");
 const button2 = document.getElementById("button2");
-const questionText = document.getElementById("question-text");
+const questionText = document.getElementsByClassName("question-text");
+const questionOverlay = document.getElementById("question-overlay");
+const overlayButton = document.getElementById("continue-button");
 
 let clickedLeft = [];
 let clickedRight = [];
@@ -34,6 +36,7 @@ let clickedRight = [];
 // Add functions to both buttons
 button1.onclick = button1Click;
 button2.onclick = button2Click;
+overlayButton.onclick = toggleOverlay;
 
 // OnLoad function
 window.onload = () => {
@@ -58,7 +61,9 @@ function button2Click() {
 
 function nextQuestion() {
     if (questionNumber <= questionArray.length - 1) {
-        questionText.innerHTML = questionArray[questionNumber];
+        questionText[0].innerHTML = questionArray[questionNumber];
+        questionText[1].innerHTML = questionArray[questionNumber];
+        if (questionOverlay.style.display === "none") questionOverlay.style.display = "flex";
         button1.innerHTML = answerArray[questionNumber][0];
         button2.innerHTML = answerArray[questionNumber][1];
         questionNumber++;
@@ -66,6 +71,14 @@ function nextQuestion() {
     else {
         questionNumber++;
         showStats();
+    }
+}
+
+function toggleOverlay() {
+    if (questionOverlay.style.display === "none") {
+        questionOverlay.style.display = "flex";
+    } else {
+        questionOverlay.style.display = "none";
     }
 }
 
