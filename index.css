@@ -89,6 +89,7 @@ body {
 .button {
     font-size: 3rem;
     height: 100%;
+    color: black;
     background-color: rgb(104, 60, 187);
     border: none;
     float: left;
