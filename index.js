@@ -29,6 +29,7 @@ const button2 = document.getElementById("button2");
 const questionText = document.getElementsByClassName("question-text");
 const questionOverlay = document.getElementById("question-overlay");
 const overlayButton = document.getElementById("continue-button");
+let currentTimerID;
 
 let clickedLeft = [];
 let clickedRight = [];
@@ -44,17 +45,27 @@ window.onload = () => {
 };
 
 function button1Click() {
-    if (questionNumber <= questionArray.length) {
+    if (questionNumber <= questionArray.length - 1) {
+        console.log("num: " + questionNumber + "\narray: " + questionArray.length);
+
+        clearTimeout(currentTimerID);
+        console.log("timer cancelled")
         clickedLeft.push(1);
         clickedRight.push(0);
+        questionArray.shift();
+        answerArray.shift();
         nextQuestion();
     }
 }
 
 function button2Click() {
-    if (questionNumber <= questionArray.length) {
+    if (questionNumber <= questionArray.length - 1) {
+        clearTimeout(currentTimerID);
+        console.log("timer cancelled")
         clickedLeft.push(0);
         clickedRight.push(1);
+        questionArray.shift();
+        answerArray.shift();
         nextQuestion();
     }
 }
@@ -66,10 +77,10 @@ function nextQuestion() {
         if (questionOverlay.style.display === "none") questionOverlay.style.display = "flex";
         button1.innerHTML = answerArray[questionNumber][0];
         button2.innerHTML = answerArray[questionNumber][1];
-        questionNumber++;
+        //questionNumber++;
     }
     else {
-        questionNumber++;
+        //questionNumber++;
         showStats();
     }
 }
@@ -79,7 +90,26 @@ function toggleOverlay() {
         questionOverlay.style.display = "flex";
     } else {
         questionOverlay.style.display = "none";
+        startTimer();
     }
+}
+
+function startTimer() {
+    currentTimerID = setTimeout(skipQuestion, 3000);
+    console.log("timer started");
+}
+
+function skipQuestion() {
+    console.log("timer up");
+    
+    console.log("before: " + questionArray[0]);
+    
+    var _ = questionArray.shift();
+    questionArray.push(_);
+    _ = answerArray.shift();
+    answerArray.push(_);
+    console.log("after: " + questionArray[0]);
+    nextQuestion();
 }
 
 function showStats() {
