@@ -131,5 +131,5 @@ function showEndScreen() {
 }
 
 function redirectToResultsScreen() {
-    window.location.replace("https://snowboiii.github.io/would-you-rather-but-with-a-timer/results/results.html");
+    window.location.replace("snowboiii.github.io/would-you-rather-but-with-a-timer/results/results.html");
 }
