@@ -77,3 +77,31 @@ async function createChart(questionId) {
         }
     });
 }
+
+function zoomChart(container) {
+    if (container.classList.contains('zoomed')) return;
+    
+    const placeholder = container.cloneNode(true);
+    placeholder.classList.add('zoomed-placeholder');
+    placeholder.id = 'placeholder-' + Math.random().toString(36).substring(2, 9);
+    container.parentNode.insertBefore(placeholder, container);
+    
+    document.body.classList.add('zoomed-mode');
+    container.classList.add('zoomed');
+    document.querySelector('.close-button').style.display = "block";
+}
+
+function unzoomChart(e) {
+    e.stopPropagation();
+    document.body.classList.remove('zoomed-mode');
+    const zoomedChart = document.querySelector('.chart-container.zoomed');
+    if (zoomedChart) {
+        zoomedChart.classList.remove('zoomed');
+        const placeholder = document.querySelector('.zoomed-placeholder');
+        if (placeholder) {
+            placeholder.parentNode.insertBefore(zoomedChart, placeholder);
+            placeholder.remove();
+        }
+    }
+    document.querySelector('.close-button').style.display = "none";
+}

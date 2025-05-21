@@ -17,7 +17,24 @@ body {
     padding: 0;
 }
 
+body.zoomed-mode::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 98;
+    display: none;
+}
+
+body.zoomed-mode::before {
+    display: block;
+}
+
 .container {
+    position: relative;
     height: 100%;
     width: 100%;
     display: flex;
@@ -26,10 +43,11 @@ body {
     justify-content: space-between;
     align-content: space-around;
     text-align: center;
-    background-color: #121212;
+    background-color: #eeeeee;
 }
 
 .chart-container {
+    transition: all 0.3s ease;
     position: relative;
     float: left;
     width: 21%;
@@ -37,4 +55,36 @@ body {
     margin: 1%;
     height: 25%;
     background-color: #eeeeee;
+}
+.chart-container.zoomed-placeholder {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.close-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1000;
+    display: none;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.zoomed {
+    position: absolute;
+    top: 7%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    z-index: 100;
+    margin: 1%;
+    padding: 1%;
+    transform: none;
+    background-color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    transform: scale(1.02);
 }

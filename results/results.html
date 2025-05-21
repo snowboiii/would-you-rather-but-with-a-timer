@@ -6,53 +6,43 @@
 </head>
 <body>
     <div class="container">
-        <div class="chart-container" id="container-0">
+        <div class="chart-container" id="container-0" onclick="zoomChart(this)">
             <canvas id="chart-0"></canvas>
         </div>
-        <div class="chart-container" id="container-1">
+        <div class="chart-container" id="container-1" onclick="zoomChart(this)">
             <canvas id="chart-1"></canvas>
-            
         </div>
-        <div class="chart-container" id="container-2">
+        <div class="chart-container" id="container-2" onclick="zoomChart(this)">
             <canvas id="chart-2"></canvas>
-            
         </div>
-        <div class="chart-container" id="container-3">
+        <div class="chart-container" id="container-3" onclick="zoomChart(this)">
             <canvas id="chart-3"></canvas>
-            
         </div>
-        <div class="chart-container" id="container-4">
+        <div class="chart-container" id="container-4" onclick="zoomChart(this)">
             <canvas id="chart-4"></canvas>
-            
         </div>
-        <div class="chart-container" id="container-5">
+        <div class="chart-container" id="container-5" onclick="zoomChart(this)">
             <canvas id="chart-5"></canvas>
-            
         </div>
-        <div class="chart-container" id="container-6">
+        <div class="chart-container" id="container-6" onclick="zoomChart(this)">
             <canvas id="chart-6"></canvas>
-            
         </div>
-        <div class="chart-container" id="container-7">
+        <div class="chart-container" id="container-7" onclick="zoomChart(this)">
             <canvas id="chart-7"></canvas>
-            
         </div>
-        <div class="chart-container" id="container-8">
+        <div class="chart-container" id="container-8" onclick="zoomChart(this)">
             <canvas id="chart-8"></canvas>
-            
         </div>
-        <div class="chart-container" id="container-9">
+        <div class="chart-container" id="container-9" onclick="zoomChart(this)">
             <canvas id="chart-9"></canvas>
-
         </div>
-        <div class="chart-container" id="container-10">
+        <div class="chart-container" id="container-10" onclick="zoomChart(this)">
             <canvas id="chart-10"></canvas>
-
         </div>
-        <div class="chart-container" id="container-11">
+        <div class="chart-container" id="container-11" onclick="zoomChart(this)">
             <canvas id="chart-11"></canvas>
-
         </div>
+        <button class="close-button" onclick="unzoomChart(event)"></button>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="https://www.gstatic.com/firebasejs/11.8.0/firebase-app-compat.js"></script>
