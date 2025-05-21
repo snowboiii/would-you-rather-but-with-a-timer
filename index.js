@@ -8,7 +8,9 @@ const questionArray = [
     ["You're offered 1.000€ to test a new shampoo on rabbits. It's legal, but will hurt them.", 6],
     ["You see a child stealing food in a shop. You're the only one who saw it.", 7],
     ["You see a friend being mean to someone anonymously online. No one knows it's them.", 8],
-    ["You're interviewing for your dream job. They ask if you've ever lied—and being honest might cost you the job.", 9]
+    ["You're interviewing for your dream job. They ask if you've ever lied—and being honest might cost you the job.", 9],
+    ["Question 11 is a very long and very much cool question.", 10],
+    ["Question 12 is somehow not as long but a way funnier question than Question 11.", 11]
 ];
 const answerArray = [
     ["Keep the money.", "Try to return it."],
@@ -20,7 +22,9 @@ const answerArray = [
     ["Take the job.", "Refuse, even if you need the money."],
     ["Report it.", "Let it go—they probably need it."],
     ["Call them out, risking the friendship.", "Ignore it. Not your problem."],
-    ["Lie and say you're always truthful.", "Admit you've lied before."]
+    ["Lie and say you're always truthful.", "Admit you've lied before."],
+    ["Answer11/1", "Answer11/2"],
+    ["Answer12/1", "Answer12/2"]
 ];
 
 let curQArray = questionArray;
