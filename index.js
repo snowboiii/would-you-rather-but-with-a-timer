@@ -1,14 +1,14 @@
 const questionArray = [
-    "You see someone drop a wallet with 200€ in it. No one else notices.",
-    "Your friend's horrible artwork is being shown at school. They ask you if you like it, looking proud and nervous.",
-    "You're about to fail a big exam. A friend secretly gives you the answers.",
-    "You forgot your best friend's birthday. You can lie and say the gift is late, or tell the truth.",
-    "A trolley is heading towards 5 people. You can pull the lever to divert it to the other track, killing 1 person instead.",
-    "You find someone unconscious in a park. You're running late for an important appointment.",
-    "You're offered 1.000€ to test a new shampoo on rabbits. It's legal, but will hurt them.",
-    "You see a child stealing food in a shop. You're the only one who saw it.",
-    "You see a friend being mean to someone anonymously online. No one knows it's them.",
-    "You're interviewing for your dream job. They ask if you've ever lied—and being honest might cost you the job."
+    ["You see someone drop a wallet with 200€ in it. No one else notices.", 0],
+    ["Your friend's horrible artwork is being shown at school. They ask you if you like it, looking proud and nervous.", 1],
+    ["You're about to fail a big exam. A friend secretly gives you the answers.", 2],
+    ["You forgot your best friend's birthday. You can lie and say the gift is late, or tell the truth.", 3],
+    ["A trolley is heading towards 5 people. You can pull the lever to divert it to the other track, killing 1 person instead.", 4],
+    ["You find someone unconscious in a park. You're running late for an important appointment.", 5],
+    ["You're offered 1.000€ to test a new shampoo on rabbits. It's legal, but will hurt them.", 6],
+    ["You see a child stealing food in a shop. You're the only one who saw it.", 7],
+    ["You see a friend being mean to someone anonymously online. No one knows it's them.", 8],
+    ["You're interviewing for your dream job. They ask if you've ever lied—and being honest might cost you the job.", 9]
 ];
 const answerArray = [
     ["Keep the money.", "Try to return it."],
@@ -21,14 +21,17 @@ const answerArray = [
     ["Report it.", "Let it go—they probably need it."],
     ["Call them out, risking the friendship.", "Ignore it. Not your problem."],
     ["Lie and say you're always truthful.", "Admit you've lied before."]
-]
-let questionNumber = 0
+];
+
+let curQArray = questionArray;
+let curAArray = answerArray;
 
 const button1 = document.getElementById("button1");
 const button2 = document.getElementById("button2");
 const questionText = document.getElementsByClassName("question-text");
 const questionOverlay = document.getElementById("question-overlay");
 const overlayButton = document.getElementById("continue-button");
+const resultsDiv = document.getElementById("results");
 let currentTimerID;
 
 let clickedLeft = [];
@@ -45,42 +48,42 @@ window.onload = () => {
 };
 
 function button1Click() {
-    if (questionNumber <= questionArray.length - 1) {
-        console.log("num: " + questionNumber + "\narray: " + questionArray.length);
-
+    if (0 <= curQArray.length - 1) {
+        console.log("num: " + 0 + "\narray: " + curQArray.length);
         clearTimeout(currentTimerID);
+        saveChoice(curQArray[0][1], 0);
         console.log("timer cancelled")
         clickedLeft.push(1);
         clickedRight.push(0);
-        questionArray.shift();
-        answerArray.shift();
+        curQArray.shift();
+        curAArray.shift();
         nextQuestion();
     }
 }
 
 function button2Click() {
-    if (questionNumber <= questionArray.length - 1) {
+    if (0 <= curQArray.length - 1) {
+        console.log("num: " + 0 + "\narray: " + curQArray.length);
         clearTimeout(currentTimerID);
+        saveChoice(curQArray[0][1], 1);
         console.log("timer cancelled")
         clickedLeft.push(0);
         clickedRight.push(1);
-        questionArray.shift();
-        answerArray.shift();
+        curQArray.shift();
+        curAArray.shift();
         nextQuestion();
     }
 }
 
 function nextQuestion() {
-    if (questionNumber <= questionArray.length - 1) {
-        questionText[0].innerHTML = questionArray[questionNumber];
-        questionText[1].innerHTML = questionArray[questionNumber];
+    if (0 <= curQArray.length - 1) {
+        questionText[0].innerHTML = curQArray[0][0];
+        questionText[1].innerHTML = curQArray[0][0];
         if (questionOverlay.style.display === "none") questionOverlay.style.display = "flex";
-        button1.innerHTML = answerArray[questionNumber][0];
-        button2.innerHTML = answerArray[questionNumber][1];
-        //questionNumber++;
+        button1.innerHTML = curAArray[0][0];
+        button2.innerHTML = curAArray[0][1];
     }
     else {
-        //questionNumber++;
         showStats();
     }
 }
@@ -102,18 +105,43 @@ function startTimer() {
 function skipQuestion() {
     console.log("timer up");
     
-    console.log("before: " + questionArray[0]);
+    console.log("before: " + curQArray[0]);
     
-    var _ = questionArray.shift();
-    questionArray.push(_);
-    _ = answerArray.shift();
-    answerArray.push(_);
-    console.log("after: " + questionArray[0]);
+    var _ = curQArray.shift();
+    curQArray.push(_);
+    _ = curAArray.shift();
+    curAArray.push(_);
+    console.log("after: " + curQArray[0]);
     nextQuestion();
 }
 
+function saveChoice(questionId, choice) {
+    db.collection("surveyResponses").add({
+        questionId: questionId,
+        choice: choice,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    });
+}
+
 function showStats() {
-    console.log("left: " + clickedLeft);
-    console.log("right: " + clickedRight);
-    alert(`clicked left: ${clickedLeft}\nclicked right: ${clickedRight}`);
+    document.getElementsByClassName("container")[0].style.display = "none";
+    db.collection("surveyResponses").get().then((querySnapshot) => {
+        const questions = {};
+
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            if (!questions[data.questionId]) {
+                questions[data.questionId] = [];
+            }
+            questions[data.questionId].push(data.choice);
+        });
+
+        for (const [questionId, choices] of Object.entries(questions)) {
+            resultsDiv.innerHTML += `
+                <h3>Question ${questionId}:</h3>
+                <p>${choices.join(", ")}
+                `;
+        }
+    });
+    resultsDiv.style.display = "flex";
 }

@@ -97,6 +97,14 @@ body {
     text-align: center;
 }
 
+#results {
+    display: none;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(16, 53, 75);
+    color: white;
+}
+
 .button {
     font-size: 3rem;
     height: 100%;
