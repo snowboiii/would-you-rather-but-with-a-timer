@@ -12,6 +12,9 @@ body {
     height: 100%;
     width: 100%;
     display: flex;
+    border: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
@@ -27,6 +30,7 @@ body {
 }
 
 .chart-container {
+    position: relative;
     float: left;
     width: 21%;
     padding: 1%;
