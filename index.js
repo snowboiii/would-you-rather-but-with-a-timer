@@ -32,6 +32,7 @@ const questionText = document.getElementsByClassName("question-text");
 const questionOverlay = document.getElementById("question-overlay");
 const overlayButton = document.getElementById("continue-button");
 const resultsDiv = document.getElementById("results");
+const resultsButton = document.getElementById("results-button");
 let currentTimerID;
 
 let clickedLeft = [];
@@ -41,6 +42,7 @@ let clickedRight = [];
 button1.onclick = button1Click;
 button2.onclick = button2Click;
 overlayButton.onclick = toggleOverlay;
+resultsButton.onclick = redirectToResultsScreen;
 
 // OnLoad function
 window.onload = () => {
@@ -84,7 +86,7 @@ function nextQuestion() {
         button2.innerHTML = curAArray[0][1];
     }
     else {
-        showStats();
+        showEndScreen();
     }
 }
 
@@ -123,25 +125,11 @@ function saveChoice(questionId, choice) {
     });
 }
 
-function showStats() {
+function showEndScreen() {
     document.getElementsByClassName("container")[0].style.display = "none";
-    db.collection("surveyResponses").get().then((querySnapshot) => {
-        const questions = {};
-
-        querySnapshot.forEach((doc) => {
-            const data = doc.data();
-            if (!questions[data.questionId]) {
-                questions[data.questionId] = [];
-            }
-            questions[data.questionId].push(data.choice);
-        });
-
-        for (const [questionId, choices] of Object.entries(questions)) {
-            resultsDiv.innerHTML += `
-                <h3>Question ${questionId}:</h3>
-                <p>${choices.join(", ")}
-                `;
-        }
-    });
     resultsDiv.style.display = "flex";
+}
+
+function redirectToResultsScreen() {
+    window.location.replace("https://www.snowboiii.github.io/would-you-rather-but-with-a-timer/results/results.html");
 }

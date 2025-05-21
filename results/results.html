@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<head>
+    <title>Survey Results</title>
+    <link rel="stylesheet" href="results.css">
+</head>
+<body>
+    <div class="container">
+        <div class="chart-container" id="container-0">
+            <canvas id="chart-0"></canvas>
+        </div>
+        <div class="chart-container" id="container-1">
+            <canvas id="chart-1"></canvas>
+            
+        </div>
+        <div class="chart-container" id="container-2">
+            <canvas id="chart-2"></canvas>
+            
+        </div>
+        <div class="chart-container" id="container-3">
+            <canvas id="chart-3"></canvas>
+            
+        </div>
+        <div class="chart-container" id="container-4">
+            <canvas id="chart-4"></canvas>
+            
+        </div>
+        <div class="chart-container" id="container-5">
+            <canvas id="chart-5"></canvas>
+            
+        </div>
+        <div class="chart-container" id="container-6">
+            <canvas id="chart-6"></canvas>
+            
+        </div>
+        <div class="chart-container" id="container-7">
+            <canvas id="chart-7"></canvas>
+            
+        </div>
+        <div class="chart-container" id="container-8">
+            <canvas id="chart-8"></canvas>
+            
+        </div>
+        <div class="chart-container" id="container-9">
+            <canvas id="chart-9"></canvas>
+
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.8.0/firebase-firestore-compat.js"></script>
+    <script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyAMGk-vov7NE0aNKalMay7KdFH8Sbr0ZYE",
+        authDomain: "would-you-rather-with-a-timer.firebaseapp.com",
+        projectId: "would-you-rather-with-a-timer",
+        storageBucket: "would-you-rather-with-a-timer.firebasestorage.app",
+        messagingSenderId: "952036079018",
+        appId: "1:952036079018:web:cce1c0842e87554b9767d3",
+    };
+    const app = firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    window.db = db;
+    </script>
+    <script src="results.js"></script>
+</body>
