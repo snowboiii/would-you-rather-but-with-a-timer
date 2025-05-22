@@ -43,7 +43,7 @@ body.zoomed-mode::before {
     justify-content: space-between;
     align-content: space-around;
     text-align: center;
-    background-color: #eeeeee;
+    background-color: #fff;
 }
 
 .chart-container {
@@ -54,7 +54,7 @@ body.zoomed-mode::before {
     padding: 1%;
     margin: 1%;
     height: 25%;
-    background-color: #eeeeee;
+    background-color: #fff;
 }
 .chart-container.zoomed-placeholder {
     visibility: hidden;

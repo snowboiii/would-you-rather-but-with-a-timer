@@ -45,7 +45,6 @@ async function sumAnswers(questionId) {
         else if (choice === 1) rightCount++;
     });
 
-    console.log(`Question ${questionId}: Left = ${leftCount}, Right = ${rightCount}`);
     return { leftCount, rightCount };
 }
 

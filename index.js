@@ -37,6 +37,7 @@ const questionOverlay = document.getElementById("question-overlay");
 const overlayButton = document.getElementById("continue-button");
 const resultsDiv = document.getElementById("results");
 const resultsButton = document.getElementById("results-button");
+const timer = document.getElementById("countdown");
 let currentTimerID;
 
 let clickedLeft = [];
@@ -104,20 +105,23 @@ function toggleOverlay() {
 }
 
 function startTimer() {
-    currentTimerID = setTimeout(skipQuestion, 3000);
-    console.log("timer started");
+    let timerValue = 3;
+    timer.textContent = timerValue;
+    currentTimerID = setInterval(() => {
+        timerValue--;
+        timer.textContent = timerValue;
+        if (timerValue <= 0) {
+            clearInterval(currentTimerID);
+            skipQuestion();
+        }
+    }, 1000);
 }
 
 function skipQuestion() {
-    console.log("timer up");
-    
-    console.log("before: " + curQArray[0]);
-    
     var _ = curQArray.shift();
     curQArray.push(_);
     _ = curAArray.shift();
     curAArray.push(_);
-    console.log("after: " + curQArray[0]);
     nextQuestion();
 }
 
