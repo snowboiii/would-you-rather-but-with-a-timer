@@ -1,5 +1,5 @@
 const questionArray = [
-    ["Du findest eine Geldbörse mit 200€. Niemand hat es gesehen", 0],
+    ["Du findest eine Geldbörse mit 200€. Niemand hat es gesehen.", 0],
     ["Jemand hat dir wehgetan.", 1],
     ["Du brauchst dringend Geld, weißt aber, dass du einen Kredit nie zurückzahlen könntest.", 2],
     ["Dein Wecker klingelt. Du hast zur Sicherheit einen zweiten gestellt.", 3],
