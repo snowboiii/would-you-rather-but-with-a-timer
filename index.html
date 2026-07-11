@@ -5,31 +5,17 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <div id="results">
-       <p>Thank you for participating!</p>
-       <button id="results-button">Take me to the results screen</button> 
-    </div>
-    <div class="container">
-        <div id="clock">
-            <div id="watch">
-                <img src="stopwatch.svg"/>
-                <p id="countdown">0</p>
-            </div>
-        </div>
-        <div class="question">
-            <p class="question-text">Loading...</p>
-        </div>
-        <div class="answer">
-            <button class="button" id="button1"><span>Loading...</span></button>
-            <button class="button" id="button2"><span>Loading...</span></button>
-        </div>
-    </div>
-    <div class="big-question-container" id="question-overlay">
-        <div class="question-big">
-            <p class="question-text">Loading...</p>
-        </div>
-        <button class="big-question-button" id="continue-button"><p>Click to continue...</p></button>
-    </div>
+    <h1>Survey with a timer</h1>
+    <label for="create-survey-button">Create a new survey:</label>
+    <button class="operation-button" id="create-survey-button">Create Survey</button>
+    <br>
+    <br>
+    <label for="survey-code-input">Enter survey code:</label>
+    <input class="text-input" id="survey-code-input" type="text">
+    <button class="operation-button" id="start-survey-button">Go</button>
+    <br>
+    <br>
+    <a id="fatal-response-text" style="display: none;">Couldn't find survey with specified code.</a>
     <script src="https://www.gstatic.com/firebasejs/11.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/11.8.0/firebase-firestore-compat.js"></script>
     <script>
