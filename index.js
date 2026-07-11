@@ -11,13 +11,8 @@ function createSurvey() {
 
 async function checkSurveyExists() {
     console.log(startSurveyInput.value);
-    const a = await db.collection("test").get();
-    console.log(a);
-    // console.log(a._delegate._document.key.path.segments);
-    var b = a._delegate._snapshot.docs.keyedMap.root.key.path.segments;
-    console.log(b);
-    console.log(b.includes(startSurveyInput.value));
-    if (b.includes(startSurveyInput.value)) {
+    const survey = await db.collection("test").doc(startSurveyInput.value).get();
+    if (survey._delegate._document != null) {
         window.location.href = 'https://snowboiii.github.io/would-you-rather-but-with-a-timer/survey/survey.html?code=' + startSurveyInput.value;
     } else {
         document.getElementById("fatal-response-text").style.display = "flex";
