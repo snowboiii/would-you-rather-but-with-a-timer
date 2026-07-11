@@ -6,7 +6,7 @@ createSurveyButton.onclick = createSurvey;
 startSurveyButton.onclick = checkSurveyExists;
 
 function createSurvey() {
-    window.location.href = 'https://snowboiii.github.io/would-you-rather-with-a-timer/create-survey/create-survey.html';
+    window.location.href = 'https://snowboiii.github.io/would-you-rather-but-with-a-timer/create-survey/create-survey.html';
 }
 
 async function checkSurveyExists() {
@@ -18,7 +18,7 @@ async function checkSurveyExists() {
     console.log(b);
     console.log(b.includes(startSurveyInput.value));
     if (b.includes(startSurveyInput.value)) {
-        window.location.href = 'https://snowboiii.github.io/would-you-rather-with-a-timer/survey/survey.html?code=' + startSurveyInput.value;
+        window.location.href = 'https://snowboiii.github.io/would-you-rather-but-with-a-timer/survey/survey.html?code=' + startSurveyInput.value;
     } else {
         document.getElementById("fatal-response-text").style.display = "flex";
     }

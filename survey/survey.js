@@ -126,5 +126,5 @@ function showEndScreen() {
 }
 
 function redirectToResultsScreen() {
-    window.location.href = "results/results.html?code=" + surveyCode;
+    window.location.href = "https://snowboiii.github.io/would-you-rather-but-with-a-timer/results/results.html?code=" + surveyCode;
 }
