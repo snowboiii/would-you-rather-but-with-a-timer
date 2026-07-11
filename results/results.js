@@ -62,7 +62,6 @@ async function createChart(questionId) {
     canvas.id = `chart-${questionId}`;
     chartDiv.append(canvas);
     document.getElementsByClassName("container")[0].insertBefore(chartDiv, document.getElementsByClassName("close-button")[0]);
-    chartDiv.onclick = "zoomChart(this)";
 
     new Chart(`chart-${questionId}`, {
         type: "bar",
