@@ -43,10 +43,8 @@ async function fetchSurvey() {
 
 function button1Click() {
     if (0 <= currentQuestionArray.length - 1) {
-        console.log("num: " + 0 + "\narray: " + currentQuestionArray.length);
         clearTimeout(currentTimerID);
         saveChoice(currentQuestionArray[0], 0);
-        console.log("timer cancelled")
         clickedLeft.push(1);
         clickedRight.push(0);
         currentQuestionArray.shift();
@@ -58,10 +56,8 @@ function button1Click() {
 
 function button2Click() {
     if (0 <= currentQuestionArray.length - 1) {
-        console.log("num: " + 0 + "\narray: " + currentQuestionArray.length);
         clearTimeout(currentTimerID);
         saveChoice(currentQuestionArray[0], 1);
-        console.log("timer cancelled")
         clickedLeft.push(0);
         clickedRight.push(1);
         currentQuestionArray.shift();
