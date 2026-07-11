@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Survey Results</title>
-    <link rel="stylesheet" href="results.css">
+    <title>Survey</title>
+    <link rel="stylesheet" href="home.css">
 </head>
 <body>
-    <div class="container">
-        <button class="close-button" onclick="unzoomChart(event)"></button>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <h1>Survey with a timer</h1>
+    <label for="create-survey-button">Create a new survey:</label>
+    <button class="operation-button" id="create-survey-button">Create Survey</button>
+    <br>
+    <br>
+    <label for="survey-code-input">Enter survey code:</label>
+    <input class="text-input" id="survey-code-input" type="text">
+    <button class="operation-button" id="start-survey-button">Go</button>
+    <br>
+    <br>
+    <a id="fatal-response-text" style="display: none;">Couldn't find survey with specified code.</a>
     <script src="https://www.gstatic.com/firebasejs/11.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/11.8.0/firebase-firestore-compat.js"></script>
     <script>
@@ -24,5 +31,5 @@
     const db = firebase.firestore();
     window.db = db;
     </script>
-    <script src="results.js"></script>
+    <script src="home.js"></script>
 </body>

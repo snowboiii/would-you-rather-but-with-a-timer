@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Create a Survey</title>
+    <link rel="stylesheet" href="create-survey.css">
+</head>
+<body>
+    <h1>Create a survey</h1>
+    <div class="input-field">
+        <label for="title-input">Survey Title:</label>
+        <input class="text-input" id="title-input" type="text">
+    </div>
+    <div class="input-field">
+        <label for="question-1-input">Question 1:</label>
+        <input class="text-input" id="question-1-input" type="text">
+        <label for="question-1-answer-1">Answer 1:</label>
+        <input class="text-input" id="question-1-answer-1-input" type="text">
+        <label for="question-1-answer-2">Answer 2:</label>
+        <input class="text-input" id="question-1-answer-2-input" type="text">
+    </div>
+    <button class="operation-button" id="create-question-button">Create New Question</button>
+    <button class="operation-button" id="save-survey-button">Save Survey</button>
+    <br>
+    <br>
+    <a id="result-text"></a>
+    <script src="create-survey.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.8.0/firebase-firestore-compat.js"></script>
+    <script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyAMGk-vov7NE0aNKalMay7KdFH8Sbr0ZYE",
+        authDomain: "would-you-rather-with-a-timer.firebaseapp.com",
+        projectId: "would-you-rather-with-a-timer",
+        storageBucket: "would-you-rather-with-a-timer.firebasestorage.app",
+        messagingSenderId: "952036079018",
+        appId: "1:952036079018:web:cce1c0842e87554b9767d3",
+    };
+    const app = firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    window.db = db;
+    </script>
+</body>
